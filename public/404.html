@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | TekronFest</title>
+  <style>
+    :root {
+      --cyberpunk-primary: #08f7fe;
+      --cyberpunk-accent: #fe53bb;
+      --cyberpunk-dark-purple: #1a0b23;
+      --cyberpunk-darker: #0f0618;
+    }
+    
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+      background-color: var(--cyberpunk-darker);
+      color: #f1f1f1;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-radial-gradient(circle at 25% 30%, transparent 5px, rgba(10, 0, 20, 0.1) 8px);
+      background-blend-mode: overlay;
+      pointer-events: none;
+      opacity: 0.2;
+      z-index: 1;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    
+    .error-code {
+      font-size: 12rem;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1;
+      position: relative;
+      background: linear-gradient(to right, var(--cyberpunk-primary), var(--cyberpunk-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 15px rgba(254, 83, 187, 0.5);
+    }
+    
+    .error-code::before {
+      content: "404";
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      z-index: -1;
+      color: #fe53bb;
+      opacity: 0.7;
+      filter: blur(4px);
+    }
+    
+    .glitch {
+      animation: glitch 2s linear infinite;
+    }
+    
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(-3px, -3px); }
+      60% { transform: translate(3px, 3px); }
+      80% { transform: translate(3px, -3px); }
+      100% { transform: translate(0); }
+    }
+    
+    .message {
+      font-size: 1.5rem;
+      margin: 1rem 0 2rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    
+    .home-link {
+      display: inline-block;
+      background: linear-gradient(90deg, #09c6f9 0%, #045de9 100%);
+      border: 1px solid var(--cyberpunk-primary);
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 2px;
+      border-radius: 4px;
+      transition: all 0.3s;
+      box-shadow: 0 0 20px rgba(8, 247, 254, 0.3);
+    }
+    
+    .home-link:hover {
+      box-shadow: 0 0 30px rgba(8, 247, 254, 0.6);
+      transform: scale(1.05);
+    }
+    
+    .scanline {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--cyberpunk-primary), transparent);
+      position: absolute;
+      animation: scanline 4s linear infinite;
+    }
+    
+    @keyframes scanline {
+      0% { top: 0%; opacity: 0.5; }
+      50% { opacity: 0.2; }
+      100% { top: 100%; opacity: 0.5; }
+    }
+    
+    .grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(rgba(8, 247, 254, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(8, 247, 254, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    .hacker-text {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: rgba(8, 247, 254, 0.7);
+      margin-top: 2rem;
+      max-width: 60%;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      border-left: 3px solid var(--cyberpunk-primary);
+    }
+    
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 6rem;
+      }
+      
+      .message {
+        font-size: 1.2rem;
+      }
+      
+      .hacker-text {
+        max-width: 90%;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="noise"></div>
+  <div class="scanline"></div>
+  
+  <div class="container">
+    <h1 class="error-code glitch">404</h1>
+    <p class="message">SYSTEM BREACH DETECTED</p>
+    <p>The requested file has been moved to a classified location.</p>
+    <a href="/" class="home-link">RETURN TO MAIN TERMINAL</a>
+    
+    <div class="hacker-text">
+      <div>> Scanning network...</div>
+      <div>> Error: Path not found in system</div>
+      <div>> Initiating return protocol...</div>
+      <div>> Redirecting to secure access point...</div>
+    </div>
+  </div>
+  
+  <script>
+    // Simulate terminal typing effect
+    document.addEventListener('DOMContentLoaded', () => {
+      const hackerTextElement = document.querySelector('.hacker-text');
+      const lines = hackerTextElement.querySelectorAll('div');
+      
+      // Hide all lines initially
+      lines.forEach(line => {
+        line.style.visibility = 'hidden';
+      });
+      
+      // Display lines one by one
+      lines.forEach((line, index) => {
+        setTimeout(() => {
+          line.style.visibility = 'visible';
+        }, 500 * (index + 1));
+      });
+    });
+  </script>
+</body>
+</html> 

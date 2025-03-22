@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap location will be updated after deployment
+Sitemap: https://techronfest.netlify.app/sitemap.xml 

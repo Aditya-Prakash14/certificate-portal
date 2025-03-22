@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 226 100% 2%;
+    --foreground: 180 100% 95%;
+    
+    --card: 240 23% 10%;
+    --card-foreground: 180 73% 93%;
+    
+    --popover: 240 22% 5%;
+    --popover-foreground: 180 73% 93%;
+    
+    --primary: 285 96% 53%;
+    --primary-foreground: 180 100% 95%;
+    
+    --secondary: 172 98% 51%;
+    --secondary-foreground: 240 10% 3.9%;
+    
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 75%;
+    
+    --accent: 187 100% 50%;
+    --accent-foreground: 240 10% 3.9%;
+    
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 180 100% 95%;
+    
+    --border: 240 5% 25%;
+    --input: 240 5% 18%;
+    --ring: 285 96% 53%;
+    
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    @apply bg-cyberpunk-darker text-foreground scroll-smooth;
+  }
+  
+  body {
+    @apply bg-cyberpunk-darker text-foreground;
+    background-image: 
+      radial-gradient(circle at 50% 0, rgba(240, 22, 244, 0.1), transparent 25%),
+      radial-gradient(circle at 0% 50%, rgba(8, 247, 254, 0.1), transparent 25%),
+      linear-gradient(rgba(8, 247, 254, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(8, 247, 254, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    background-position: center, center, center, center;
+  }
+}
+
+@layer components {
+  .cyberpunk-card {
+    @apply relative overflow-hidden bg-cyberpunk-dark-purple border-[1px] border-cyberpunk-accent/30 shadow-xl rounded-md;
+    box-shadow: 0 0 10px rgba(8, 247, 254, 0.2);
+  }
+  
+  .cyberpunk-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyberpunk-accent to-transparent;
+  }
+  
+  .cyberpunk-card::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyberpunk-primary to-transparent;
+  }
+  
+  .neon-text {
+    @apply text-cyberpunk-accent font-bold;
+    text-shadow: 0 0 5px rgba(8, 247, 254, 0.7), 0 0 10px rgba(8, 247, 254, 0.5);
+  }
+  
+  .neon-text-pink {
+    @apply text-cyberpunk-primary font-bold;
+    text-shadow: 0 0 5px rgba(240, 22, 244, 0.7), 0 0 10px rgba(240, 22, 244, 0.5);
+  }
+  
+  .neon-border {
+    @apply border-cyberpunk-accent/70 border-[1px];
+    box-shadow: 0 0 5px rgba(8, 247, 254, 0.5), 0 0 10px rgba(8, 247, 254, 0.3);
+  }
+  
+  .neon-button {
+    @apply px-4 py-2 bg-transparent font-bold border-[1px] border-cyberpunk-accent text-cyberpunk-accent rounded-sm transition-all duration-300 relative overflow-hidden;
+    text-shadow: 0 0 5px rgba(8, 247, 254, 0.7);
+    box-shadow: 0 0 5px rgba(8, 247, 254, 0.5), inset 0 0 5px rgba(8, 247, 254, 0.3);
+  }
+  
+  .neon-button:hover {
+    @apply bg-cyberpunk-accent/10;
+    box-shadow: 0 0 10px rgba(8, 247, 254, 0.7), inset 0 0 10px rgba(8, 247, 254, 0.5);
+  }
+  
+  .neon-button:active {
+    @apply bg-cyberpunk-accent/20;
+    box-shadow: 0 0 15px rgba(8, 247, 254, 0.9), inset 0 0 15px rgba(8, 247, 254, 0.7);
+  }
+  
+  .neon-button-pink {
+    @apply px-4 py-2 bg-transparent font-bold border-[1px] border-cyberpunk-primary text-cyberpunk-primary rounded-sm transition-all duration-300 relative overflow-hidden;
+    text-shadow: 0 0 5px rgba(240, 22, 244, 0.7);
+    box-shadow: 0 0 5px rgba(240, 22, 244, 0.5), inset 0 0 5px rgba(240, 22, 244, 0.3);
+  }
+  
+  .neon-button-pink:hover {
+    @apply bg-cyberpunk-primary/10;
+    box-shadow: 0 0 10px rgba(240, 22, 244, 0.7), inset 0 0 10px rgba(240, 22, 244, 0.5);
+  }
+  
+  .neon-button-pink:active {
+    @apply bg-cyberpunk-primary/20;
+    box-shadow: 0 0 15px rgba(240, 22, 244, 0.9), inset 0 0 15px rgba(240, 22, 244, 0.7);
+  }
+  
+  .glitch-text {
+    @apply relative text-cyberpunk-accent;
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), 0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    animation: glitch 500ms infinite;
+  }
+  
+  .cyber-input {
+    @apply bg-cyberpunk-dark/80 border-[1px] border-cyberpunk-accent/30 text-white py-2 px-3 rounded-sm focus:outline-none focus:border-cyberpunk-accent transition-all duration-300;
+    box-shadow: inset 0 0 5px rgba(8, 247, 254, 0.2);
+  }
+  
+  .cyber-input:focus {
+    box-shadow: 0 0 5px rgba(8, 247, 254, 0.5), inset 0 0 5px rgba(8, 247, 254, 0.3);
+  }
+  
+  .retro-scanline {
+    @apply fixed inset-0 pointer-events-none z-[9999] overflow-hidden opacity-10;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(8, 247, 254, 0.05) 0.5%,
+      transparent 1%
+    );
+    animation: scan-line 10s linear infinite;
+  }
+  
+  .terminal-text {
+    @apply font-mono;
+    border-right: 0.15em solid rgba(8, 247, 254, 0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: terminal-typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: rgba(8, 247, 254, 0.8); }
+  }
+}
