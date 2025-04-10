@@ -41,3 +41,5 @@ coverage
 # Misc
 .cache
 .parcel-cache
+
+.early.coverage

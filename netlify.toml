@@ -10,7 +10,7 @@
 
 # Environment variable configuration (these will be overridden by Netlify UI settings)
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 # Set up headers for security and caching
 [[headers]]
