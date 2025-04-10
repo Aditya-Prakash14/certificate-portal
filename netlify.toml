@@ -12,6 +12,9 @@
 # Environment variable configuration (these will be overridden by Netlify UI settings)
 [build.environment]
   NODE_VERSION = "20"
+  NPM_FLAGS = "--no-optional"
+  VITE_SUPABASE_URL = "https://your-supabase-url.supabase.co"
+  VITE_SUPABASE_ANON_KEY = "your-supabase-anon-key"
 
 # Set up headers for security and caching
 [[headers]]
@@ -28,4 +31,21 @@
 
 # Custom build plugin
 [[plugins]]
-  package = "./netlify/plugins" 
+  package = "./netlify/plugins"
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true 
