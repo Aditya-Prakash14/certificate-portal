@@ -1,0 +1,10 @@
+name: certificate-portal-plugin
+inputs:
+  - name: buildCommand
+    description: The build command to run
+    required: true
+    default: npm run build
+  - name: publishDirectory
+    description: The directory to publish
+    required: true
+    default: dist 
