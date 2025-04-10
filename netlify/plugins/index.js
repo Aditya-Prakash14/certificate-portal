@@ -1,5 +1,5 @@
-// Netlify build plugin for TekronFest Certification Portal
-module.exports = {
+// Netlify build plugin for Certificate Portal
+export default {
   onPreBuild: async ({ utils }) => {
     console.log('Certificate Portal Plugin: Starting pre-build...')
   },
@@ -9,4 +9,4 @@ module.exports = {
   onPostBuild: async ({ utils }) => {
     console.log('Certificate Portal Plugin: Build complete!')
   }
-}; 
+} 
